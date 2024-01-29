@@ -1,22 +1,37 @@
 from datetime import datetime
 from flask_restful import Resource
-
 from flaskr.models.models import Categoria, CategoriaSchema, Tarea, TareaSchema, Usuario, UsuarioSchema
 from ..models import db
 from flask import request
+from flask_jwt_extended import jwt_required, create_access_token
 
 usuario_schema = UsuarioSchema()
 tarea_schema = TareaSchema()
 categoria_schema = CategoriaSchema()
 
-class VistaUsuarios(Resource):
+class VistaSignIn(Resource):
     def post(self):
         nuevo_usuario = Usuario(nombre_usuario=request.json['nombre_usuario'],
                                 contrasenia=request.json['contrasenia'])
+        token_de_acceso = create_access_token(identity=request.json['nombre_usuario'])
         db.session.add(nuevo_usuario)
         db.session.commit()
-        return usuario_schema.dump(nuevo_usuario)
+        return {'mensaje': 'Usuario creado exitosamente',
+                'token_de_acceso': token_de_acceso,
+                'usuario': usuario_schema.dump(nuevo_usuario)}
 
+class VistaLogIn(Resource):
+    def post(self):
+        usuario = Usuario.query.filter(Usuario.nombre_usuario == request.json["nombre_usuario"], Usuario.contrasenia == request.json["contrasenia"]).first()
+        db.session.commit()
+        if usuario is None:
+            return "El usuario no existe", 404
+        else:
+            token_de_acceso = create_access_token(identity = usuario.nombre_usuario)
+            return {"mensaje":"Acceso concedido", "usuario": usuario_schema.dump(usuario), "token_de_acceso": token_de_acceso}
+
+
+class VistaUsuarios(Resource):
     def get(self):
         return [usuario_schema.dump(usuario) for usuario in Usuario.query.all()]
     
