@@ -1,6 +1,8 @@
 import enum
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import CheckConstraint
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
+from marshmallow import fields
 
 db = SQLAlchemy()
 
@@ -42,3 +44,28 @@ class Categoria(db.Model):
 
     def __repr__(self):
         return "{}-{}".format(self.nombre, self.descripcion)
+    
+class UsuarioSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Usuario
+        include_relationships = True
+        load_instance = True
+
+class EnumADiccionario(fields.Field):
+    def _serialize(self, value, attr, obj, **kwargs):
+        if value is None:
+            return None
+        return {'llave':value.name, 'valor':value.value}
+
+class TareaSchema(SQLAlchemyAutoSchema):
+    estado = EnumADiccionario(attribute=('estado'))
+    class Meta:
+        model = Tarea
+        include_relationships = True
+        load_instance = True
+
+class CategoriaSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Categoria
+        include_relationships = True
+        load_instance = True
