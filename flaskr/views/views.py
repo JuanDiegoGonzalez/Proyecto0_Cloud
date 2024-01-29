@@ -10,15 +10,15 @@ tarea_schema = TareaSchema()
 categoria_schema = CategoriaSchema()
 
 class VistaUsuarios(Resource):
-    def get(self):
-        return [usuario_schema.dump(usuario) for usuario in Usuario.query.all()]
-    
     def post(self):
         nuevo_usuario = Usuario(nombre_usuario=request.json['nombre_usuario'],
                                 contrasenia=request.json['contrasenia'])
         db.session.add(nuevo_usuario)
         db.session.commit()
         return usuario_schema.dump(nuevo_usuario)
+
+    def get(self):
+        return [usuario_schema.dump(usuario) for usuario in Usuario.query.all()]
     
 class VistaUsuario(Resource):
     def get(self, id_usuario):
@@ -38,9 +38,6 @@ class VistaUsuario(Resource):
         return 'Operacion exitosa', 204
     
 class VistaTareas(Resource):
-    def get(self):
-        return [tarea_schema.dump(tarea) for tarea in Tarea.query.all()]
-    
     def post(self):
         nueva_tarea = Tarea(texto=request.json['texto'],
                             fecha_creacion=datetime.strptime(request.json['fecha_creacion'], "%Y-%m-%d").date(),
@@ -51,6 +48,9 @@ class VistaTareas(Resource):
         db.session.add(nueva_tarea)
         db.session.commit()
         return tarea_schema.dump(nueva_tarea)
+
+    def get(self):
+        return [tarea_schema.dump(tarea) for tarea in Tarea.query.all()]
     
 class VistaTarea(Resource):
     def get(self, id_tarea):
@@ -78,15 +78,15 @@ class VistaTarea(Resource):
         return 'Operacion exitosa', 204
     
 class VistaCategorias(Resource):
-    def get(self):
-        return [categoria_schema.dump(categoria) for categoria in Categoria.query.all()]
-    
     def post(self):
         nueva_categoria = Categoria(nombre=request.json['nombre'],
                                     descripcion=request.json['descripcion'])
         db.session.add(nueva_categoria)
         db.session.commit()
         return categoria_schema.dump(nueva_categoria)
+
+    def get(self):
+        return [categoria_schema.dump(categoria) for categoria in Categoria.query.all()]
     
 class VistaCategoria(Resource):
     def get(self, id_categoria):

@@ -14,11 +14,11 @@ db.create_all()
 
 api = Api(app)
 api.add_resource(VistaUsuarios, '/usuarios')
-api.add_resource(VistaUsuario, '/usuario/<int:id_usuario>')
+api.add_resource(VistaUsuario, '/usuarios/<int:id_usuario>')
 api.add_resource(VistaTareas, '/tareas')
-api.add_resource(VistaTarea, '/tarea/<int:id_tarea>')
+api.add_resource(VistaTarea, '/tareas/<int:id_tarea>')
 api.add_resource(VistaCategorias, '/categorias')
-api.add_resource(VistaCategoria, '/categoria/<int:id_categoria>')
+api.add_resource(VistaCategoria, '/categorias/<int:id_categoria>')
 
 # Prueba
 with app.app_context():
