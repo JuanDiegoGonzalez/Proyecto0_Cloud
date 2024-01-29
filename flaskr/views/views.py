@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask_restful import Resource
 
 from flaskr.models.models import Categoria, CategoriaSchema, Tarea, TareaSchema, Usuario, UsuarioSchema
@@ -42,8 +43,8 @@ class VistaTareas(Resource):
     
     def post(self):
         nueva_tarea = Tarea(texto=request.json['texto'],
-                            fecha_creacion=request.json['fecha_creacion'],
-                            fecha_tentativa_finalizacion=request.json['fecha_tentativa_finalizacion'],
+                            fecha_creacion=datetime.strptime(request.json['fecha_creacion'], "%Y-%m-%d").date(),
+                            fecha_tentativa_finalizacion=datetime.strptime(request.json['fecha_tentativa_finalizacion'], "%Y-%m-%d").date(),
                             estado=request.json['estado'],
                             usuario=request.json['usuario'],
                             categoria=request.json['categoria'])
@@ -58,8 +59,12 @@ class VistaTarea(Resource):
     def put(self, id_tarea):
         tarea = Tarea.query.get_or_404(id_tarea)
         tarea.texto = request.json.get('texto', tarea.texto)
-        tarea.fecha_creacion = request.json.get('fecha_creacion', tarea.fecha_creacion)
-        tarea.fecha_tentativa_finalizacion = request.json.get('fecha_tentativa_finalizacion', tarea.fecha_tentativa_finalizacion)
+        fecha_creacion = request.json.get('fecha_creacion')
+        if fecha_creacion:
+            tarea.fecha_creacion = datetime.strptime(fecha_creacion, "%Y-%m-%d").date()
+        fecha_tentativa_finalizacion = request.json.get('fecha_tentativa_finalizacion')
+        if fecha_tentativa_finalizacion:
+            tarea.fecha_tentativa_finalizacion = datetime.strptime(fecha_tentativa_finalizacion, "%Y-%m-%d").date()
         tarea.estado = request.json.get('estado', tarea.estado)
         tarea.usuario = request.json.get('usuario', tarea.usuario)
         tarea.categoria = request.json.get('categoria', tarea.categoria)
