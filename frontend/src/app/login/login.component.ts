@@ -38,5 +38,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.cookieService.get('token_de_acceso') !== "") {
+      this.router.navigate(['/tareas']);
+    }
   }
 }
