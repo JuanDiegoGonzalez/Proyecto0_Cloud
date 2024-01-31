@@ -1,0 +1,30 @@
+<table class="table" style="margin-top:10px; margin-left:10px;">
+  <thead>
+    <tr>
+      <th class="h4">Descripción</th>
+      <th class="h4">Fecha de creación</th>
+      <th class="h4">Fecha tentativa de finalización</th>
+      <th class="h4">Estado</th>
+      <th class="h4">Categoría</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of tareas">
+      <td>
+        <dd>{{t.texto}}</dd>
+      </td>
+      <td>
+        <dd>{{t.fecha_creacion}}</dd>
+      </td>
+      <td>
+        <dd>{{t.fecha_tentativa_finalizacion}}</dd>
+      </td>
+      <td>
+        <dd>{{t.estado}}</dd>
+      </td>
+      <td>
+        <dd>{{t.categoria}}</dd>
+      </td>
+   </tr>
+  </tbody>
+</table>

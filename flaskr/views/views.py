@@ -3,7 +3,7 @@ from flask_restful import Resource
 from flaskr.models.models import Categoria, CategoriaSchema, Tarea, TareaSchema, Usuario, UsuarioSchema
 from ..models import db
 from flask import request
-from flask_jwt_extended import jwt_required, create_access_token
+from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity
 
 usuario_schema = UsuarioSchema()
 tarea_schema = TareaSchema()
@@ -30,15 +30,17 @@ class VistaLogIn(Resource):
             token_de_acceso = create_access_token(identity = usuario.nombre_usuario)
             return {"mensaje":"Acceso concedido", "usuario": usuario_schema.dump(usuario), "token_de_acceso": token_de_acceso}
 
-
 class VistaUsuarios(Resource):
+    @jwt_required()
     def get(self):
         return [usuario_schema.dump(usuario) for usuario in Usuario.query.all()]
     
 class VistaUsuario(Resource):
+    @jwt_required()
     def get(self, id_usuario):
         return usuario_schema.dump(Usuario.query.get_or_404(id_usuario))
     
+    @jwt_required()
     def put(self, id_usuario):
         usuario = Usuario.query.get_or_404(id_usuario)
         usuario.nombre_usuario = request.json.get('nombre_usuario', usuario.nombre_usuario)
@@ -46,6 +48,7 @@ class VistaUsuario(Resource):
         db.session.commit()
         return usuario_schema.dump(usuario)
     
+    @jwt_required()
     def delete(self, id_usuario):
         usuario = Usuario.query.get_or_404(id_usuario)
         db.session.delete(usuario)
@@ -53,6 +56,7 @@ class VistaUsuario(Resource):
         return 'Operacion exitosa', 204
     
 class VistaTareas(Resource):
+    @jwt_required()
     def post(self):
         nueva_tarea = Tarea(texto=request.json['texto'],
                             fecha_creacion=datetime.strptime(request.json['fecha_creacion'], "%Y-%m-%d").date(),
@@ -61,16 +65,23 @@ class VistaTareas(Resource):
                             usuario=request.json['usuario'],
                             categoria=request.json['categoria'])
         db.session.add(nueva_tarea)
+        usuario = Usuario.query.get_or_404(nueva_tarea.usuario)
+        categoria = Categoria.query.get_or_404(nueva_tarea.categoria)
+        usuario.tareas.append(nueva_tarea)
+        categoria.tareas.append(nueva_tarea)
         db.session.commit()
         return tarea_schema.dump(nueva_tarea)
 
+    @jwt_required()
     def get(self):
         return [tarea_schema.dump(tarea) for tarea in Tarea.query.all()]
     
 class VistaTarea(Resource):
+    @jwt_required()
     def get(self, id_tarea):
         return tarea_schema.dump(Tarea.query.get_or_404(id_tarea))
     
+    @jwt_required()
     def put(self, id_tarea):
         tarea = Tarea.query.get_or_404(id_tarea)
         tarea.texto = request.json.get('texto', tarea.texto)
@@ -85,7 +96,8 @@ class VistaTarea(Resource):
         tarea.categoria = request.json.get('categoria', tarea.categoria)
         db.session.commit()
         return tarea_schema.dump(tarea)
-    
+
+    @jwt_required()
     def delete(self, id_tarea):
         tarea = Tarea.query.get_or_404(id_tarea)
         db.session.delete(tarea)
@@ -93,20 +105,24 @@ class VistaTarea(Resource):
         return 'Operacion exitosa', 204
     
 class VistaCategorias(Resource):
+    @jwt_required()
     def post(self):
         nueva_categoria = Categoria(nombre=request.json['nombre'],
                                     descripcion=request.json['descripcion'])
         db.session.add(nueva_categoria)
         db.session.commit()
         return categoria_schema.dump(nueva_categoria)
-
+    
+    @jwt_required()
     def get(self):
         return [categoria_schema.dump(categoria) for categoria in Categoria.query.all()]
     
 class VistaCategoria(Resource):
+    @jwt_required()
     def get(self, id_categoria):
         return categoria_schema.dump(Categoria.query.get_or_404(id_categoria))
-    
+
+    @jwt_required()
     def put(self, id_categoria):
         categoria = Categoria.query.get_or_404(id_categoria)
         categoria.nombre = request.json.get('nombre', categoria.nombre)
@@ -114,8 +130,15 @@ class VistaCategoria(Resource):
         db.session.commit()
         return categoria_schema.dump(categoria)
     
+    @jwt_required()
     def delete(self, id_categoria):
         categoria = Categoria.query.get_or_404(id_categoria)
         db.session.delete(categoria)
         db.session.commit()
         return 'Operacion exitosa', 204
+    
+class VistaTareasUsuario(Resource):
+    @jwt_required()
+    def get(self):
+        usuario = Usuario.query.filter(Usuario.nombre_usuario == get_jwt_identity()).first()
+        return [tarea_schema.dump(tarea) for tarea in Tarea.query.filter(Tarea.usuario == usuario.id)]

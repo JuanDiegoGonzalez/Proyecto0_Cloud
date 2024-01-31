@@ -59,6 +59,8 @@ class EnumADiccionario(fields.Field):
 
 class TareaSchema(SQLAlchemyAutoSchema):
     estado = EnumADiccionario(attribute=('estado'))
+    usuario = fields.Int()
+    categoria = fields.Int()
     class Meta:
         model = Tarea
         include_relationships = True
