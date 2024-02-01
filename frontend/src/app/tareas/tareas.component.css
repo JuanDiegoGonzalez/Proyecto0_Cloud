@@ -1,27 +1,28 @@
-.table {
-    width: 90%;
-    margin-top: 10px;
-    margin-left: 10px;
-    border-collapse: collapse;
-  }
-  
-  .table th {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-  }
-  
-  .table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-  }
-  
-  .table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .table dd {
-    margin: 0;
-    font-size: 16px;
-  }
-  
+.center-content {
+  text-align: center;
+}
+
+.center-content h2 {
+  margin-top: 20px;
+}
+
+.center-content table {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-content th,
+.center-content td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.center-content th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.center-content dd {
+  margin: 0;
+}

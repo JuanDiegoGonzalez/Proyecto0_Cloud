@@ -9,11 +9,14 @@ import { TareasModule } from './tareas/tareas.module';
 import { HeaderModule } from './header/header.module';
 import { FooterModule } from './footer/footer.module';
 import { SignupModule } from './signup/signup.module';
+import { CategoriasComponent } from './categorias/categorias.component';
 
 @NgModule({
-    declarations: [
-      AppComponent
-    ],
+    declarations: [		
+      AppComponent,
+      CategoriasComponent,
+      CategoriasComponent
+   ],
     imports: [
       BrowserModule,
       AppRoutingModule,
