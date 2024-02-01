@@ -1,0 +1,22 @@
+div {
+    font-size: 18px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logout-button {
+    background-color: #fff;
+    color: #333;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  
+  .logout-button:hover {
+    background-color: #ddd;
+  }

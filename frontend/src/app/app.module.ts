@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { TareasModule } from './tareas/tareas.module';
 import { HeaderModule } from './header/header.module';
+import { FooterModule } from './footer/footer.module';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { HeaderModule } from './header/header.module';
       LoginModule,
       HttpClientModule,
       TareasModule,
-      HeaderModule
+      HeaderModule,
+      FooterModule
     ],
     providers: [],
     bootstrap: [AppComponent]
