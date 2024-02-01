@@ -1,4 +1,4 @@
-.login-container {
+.signup-container {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -7,25 +7,29 @@
   border-radius: 8px;
 }
 
-.login-container h2 {
+.signup-container h2 {
   text-align: center;
   color: #333;
 }
 
-.login-container label {
+.signup-container label {
   display: block;
   margin-bottom: 5px;
 }
 
-.login-container input {
+.signup-container input {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
   margin-bottom: 10px;
 }
 
+.signup-container .password-mismatch {
+  color: red;
+  margin-bottom: 10px; /* Adjusted margin */
+}
 
-.login-container button {
+.signup-container button {
   background-color: #333;
   color: #fff;
   padding: 10px 15px;
@@ -34,35 +38,21 @@
   width: 100%;
 }
 
-.login-container button:hover {
+.signup-container button:hover {
   background-color: #555;
 }
 
-.create-account-link {
+.signup-link {
   text-align: center;
   margin-top: 15px;
 }
 
-.create-account-link a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.create-account-link a:hover {
-  text-decoration: underline;
-}
-
-.create-account-link {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.create-account-link .underline-link {
+.signup-link .underline-link {
   cursor: pointer;
   text-decoration: underline;
   color: #007bff;
 }
 
-.create-account-link .underline-link:hover {
+.signup-link .underline-link:hover {
   text-decoration: none;
 }

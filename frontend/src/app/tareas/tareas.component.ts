@@ -18,7 +18,6 @@ export class TareasComponent implements OnInit {
 
   getTareasUsuario() {
     this.tareasService.getTareasUsuario(this.cookieService.get('token_de_acceso')).subscribe(ts => {
-      console.log(ts)
       this.tareas = ts;
     })
   }

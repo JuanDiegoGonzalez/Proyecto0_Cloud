@@ -1,0 +1,19 @@
+<div class="signup-container">
+  <h2>Regístrate</h2>
+  <form [formGroup]="signUpForm">
+    <label for="nombre_usuario">Nombre de usuario:</label>
+    <input type="text" id="nombre_usuario" formControlName="nombre_usuario" required>
+
+    <label for="contrasenia">Contraseña:</label>
+    <input type="password" id="contrasenia" formControlName="contrasenia" required>
+
+    <label for="confirmar_contrasenia">Confirmar Contraseña:</label>
+    <input type="password" id="confirmar_contrasenia" formControlName="confirmar_contrasenia" required>
+    <div *ngIf="signUpForm.get('confirmar_contrasenia')?.hasError('passwordMismatch')" class="password-mismatch">
+      Las contraseñas no coinciden
+    </div>
+
+    <button (click)="signUp()">Sign Up</button>
+  </form>
+  <p class="signup-link">¿Ya tienes una cuenta? <span class="underline-link" (click)="login()">Inicia Sesión</span></p>
+</div>

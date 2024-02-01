@@ -1,12 +1,13 @@
 <div class="login-container">
-  <h2>Login</h2>
+  <h2>Inicia Sesión</h2>
   <form [formGroup]="loginForm">
     <label for="nombre_usuario">Nombre de usuario:</label>
-    <input type="nombre_usuario" id="nombre_usuario" formControlName="nombre_usuario" required>
+    <input type="text" id="nombre_usuario" formControlName="nombre_usuario" required>
 
     <label for="contrasenia">Contraseña:</label>
-    <input type="contrasenia" id="contrasenia" formControlName="contrasenia" required>
+    <input type="password" id="contrasenia" formControlName="contrasenia" required>
 
     <button (click)="login()">Login</button>
   </form>
+  <p class="create-account-link">¿No tienes una cuenta? <span class="underline-link" (click)="createAccount()">Regístrate</span></p>
 </div>

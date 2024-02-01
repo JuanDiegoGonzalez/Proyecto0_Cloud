@@ -9,7 +9,7 @@ usuario_schema = UsuarioSchema()
 tarea_schema = TareaSchema()
 categoria_schema = CategoriaSchema()
 
-class VistaSignIn(Resource):
+class VistaSignUp(Resource):
     def post(self):
         yaExisteElUsuario = Usuario.query.filter(Usuario.nombre_usuario == request.json["nombre_usuario"]).first()
         if yaExisteElUsuario:

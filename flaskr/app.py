@@ -1,7 +1,7 @@
 from datetime import date, datetime
 from flaskr import create_app
 from flaskr.models.models import Categoria, CategoriaSchema, Estado, Tarea, TareaSchema, UsuarioSchema
-from flaskr.views.views import VistaLogIn, VistaSignIn, VistaTareasUsuario
+from flaskr.views.views import VistaLogIn, VistaSignUp, VistaTareasUsuario
 from .models import db, Usuario
 from flask_restful import Api
 from .views import VistaUsuarios, VistaUsuario, VistaTareas, VistaTarea, VistaCategorias, VistaCategoria
@@ -18,7 +18,7 @@ db.create_all()
 cors = CORS(app)
 
 api = Api(app)
-api.add_resource(VistaSignIn, '/signin/')
+api.add_resource(VistaSignUp, '/signup/')
 api.add_resource(VistaLogIn, '/login/')
 api.add_resource(VistaUsuarios, '/usuarios/')
 api.add_resource(VistaUsuario, '/usuarios/<int:id_usuario>/')

@@ -22,6 +22,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  createAccount() {
+    this.router.navigate(['/signup']);
+  }
+
   login() {
     const usernameControl = this.loginForm.get('nombre_usuario');
     const passwordControl = this.loginForm.get('contrasenia');
