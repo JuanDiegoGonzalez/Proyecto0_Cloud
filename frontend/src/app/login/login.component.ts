@@ -17,13 +17,13 @@ export class LoginComponent implements OnInit {
     private cookieService: CookieService,
     private router: Router) {
     this.loginForm = this.fb.group({
-      nombre_de_usuario: ['', Validators.required],
+      nombre_usuario: ['', Validators.required],
       contrasenia: ['', Validators.required]
     });
   }
 
   login() {
-    const usernameControl = this.loginForm.get('nombre_de_usuario');
+    const usernameControl = this.loginForm.get('nombre_usuario');
     const passwordControl = this.loginForm.get('contrasenia');
     
     if (usernameControl && passwordControl) {
@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
 
       this.loginService.login(username, password).subscribe(ls => {
         this.cookieService.set('token_de_acceso', ls.token_de_acceso);
+        this.cookieService.set('nombre_usuario', ls.usuario.nombre_usuario);
         this.router.navigate(['/tareas']);
       })
     }

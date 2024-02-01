@@ -11,14 +11,18 @@ categoria_schema = CategoriaSchema()
 
 class VistaSignIn(Resource):
     def post(self):
-        nuevo_usuario = Usuario(nombre_usuario=request.json['nombre_usuario'],
-                                contrasenia=request.json['contrasenia'])
-        token_de_acceso = create_access_token(identity=request.json['nombre_usuario'])
-        db.session.add(nuevo_usuario)
-        db.session.commit()
-        return {'mensaje': 'Usuario creado exitosamente',
-                'token_de_acceso': token_de_acceso,
-                'usuario': usuario_schema.dump(nuevo_usuario)}
+        yaExisteElUsuario = Usuario.query.filter(Usuario.nombre_usuario == request.json["nombre_usuario"]).first()
+        if yaExisteElUsuario:
+            return {'mensaje': 'Ya existe el usuario'}, 409
+        else:
+            nuevo_usuario = Usuario(nombre_usuario=request.json['nombre_usuario'],
+                                    contrasenia=request.json['contrasenia'])
+            token_de_acceso = create_access_token(identity=request.json['nombre_usuario'])
+            db.session.add(nuevo_usuario)
+            db.session.commit()
+            return {'mensaje': 'Usuario creado exitosamente',
+                    'token_de_acceso': token_de_acceso,
+                    'usuario': usuario_schema.dump(nuevo_usuario)}
 
 class VistaLogIn(Resource):
     def post(self):
