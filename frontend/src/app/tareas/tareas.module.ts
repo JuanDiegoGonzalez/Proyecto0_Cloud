@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TareasComponent } from './tareas.component';
 import { CookieService } from 'ngx-cookie-service';
 import { HeaderModule } from "../header/header.module";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [TareasComponent],
@@ -10,7 +11,8 @@ import { HeaderModule } from "../header/header.module";
     providers: [CookieService],
     imports: [
         CommonModule,
-        HeaderModule
+        HeaderModule,
+        FormsModule
     ]
 })
 export class TareasModule { }

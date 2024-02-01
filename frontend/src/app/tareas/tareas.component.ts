@@ -14,6 +14,17 @@ import { Categoria } from '../categorias/Categoria';
 export class TareasComponent implements OnInit {
   tareas: Array<Tarea>;
   categorias: Array<Categoria>;
+  nuevaTarea: Tarea = {
+    texto: '',
+    fecha_creacion: new Date(),
+    fecha_tentativa_finalizacion: new Date(),
+    estado: 1,
+    categoria: 1,
+    estado_display: '',
+    usuario: 0,
+    categoria_display: ''
+  };
+  mostrarFormularioNuevaTarea = false;
 
   constructor(private cdr: ChangeDetectorRef,
     private tareasService: TareasService,
@@ -45,6 +56,18 @@ export class TareasComponent implements OnInit {
         tarea.categoria_display = categoriaAsociada ? categoriaAsociada.nombre : 'Sin categoría';
       });
     })
+  }
+
+  agregarTarea() {
+
+  }
+
+  toggleFormulario() {
+    this.mostrarFormularioNuevaTarea = !this.mostrarFormularioNuevaTarea;
+  }
+
+  textoBoton() {
+    return this.mostrarFormularioNuevaTarea ? 'Cancelar' : 'Agregar Tarea';
   }
 
   ngOnInit() {

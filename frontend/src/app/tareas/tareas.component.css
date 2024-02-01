@@ -1,13 +1,15 @@
 .center-content {
   text-align: center;
+  margin-top: 20px;
 }
 
 .center-content h2 {
-  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .center-content table {
   margin-top: 10px;
+  margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -25,4 +27,42 @@
 
 .center-content dd {
   margin: 0;
+}
+
+.center-content button,
+.center-content form {
+  margin-top: 15px;
+}
+
+.center-content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-content form label {
+  margin-bottom: 5px;
+}
+
+.center-content form input,
+.center-content form select {
+  width: 35%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.center-content form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.center-content form button:hover {
+  background-color: #45a049;
 }
