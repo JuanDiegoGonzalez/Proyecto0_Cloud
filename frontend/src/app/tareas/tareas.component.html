@@ -1,44 +1,49 @@
 <app-header></app-header>
 <div class="center-content">
   <h2>Lista de tareas</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th class="h4">Descripción</th>
-        <th class="h4">Fecha de creación</th>
-        <th class="h4">Fecha tentativa de finalización</th>
-        <th class="h4">Estado</th>
-        <th class="h4">Categoría</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let t of tareas">
-        <td>
-          <dd>{{t.texto}}</dd>
-        </td>
-        <td>
-          <dd>{{t.fecha_creacion}}</dd>
-        </td>
-        <td>
-          <dd>{{t.fecha_tentativa_finalizacion}}</dd>
-        </td>
-        <td>
-          <dd>{{t.estado_display}}</dd>
-        </td>
-        <td>
-          <dd>{{t.categoria_display}}</dd>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <ng-container *ngIf="tareas && tareas.length > 0; else noTareas">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="h4">Descripción</th>
+          <th class="h4">Fecha de creación</th>
+          <th class="h4">Fecha tentativa de finalización</th>
+          <th class="h4">Estado</th>
+          <th class="h4">Categoría</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of tareas">
+          <td>
+            <dd>{{t.texto}}</dd>
+          </td>
+          <td>
+            <dd>{{t.fecha_creacion}}</dd>
+          </td>
+          <td>
+            <dd>{{t.fecha_tentativa_finalizacion}}</dd>
+          </td>
+          <td>
+            <dd>{{t.estado_display}}</dd>
+          </td>
+          <td>
+            <dd>{{t.categoria_display}}</dd>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #noTareas>
+    <p>No tienes tareas. ¡Crea una!</p>
+  </ng-template>
   <button (click)="toggleFormulario()">{{ textoBoton() }}</button>
   <form *ngIf="mostrarFormularioNuevaTarea" (ngSubmit)="agregarTarea()">
     <label for="texto">Descripción:</label>
     <input type="text" id="texto" name="texto" [(ngModel)]="nuevaTarea.texto" required>
 
     <label for="fecha_tentativa_finalizacion">Fecha tentativa de finalización:</label>
-    <input type="date" id="fecha_tentativa_finalizacion" name="fecha_tentativa_finalizacion" [(ngModel)]="nuevaTarea.fecha_tentativa_finalizacion" required>
-  
+    <input type="date" id="fecha_tentativa_finalizacion" name="fecha_tentativa_finalizacion" [(ngModel)]="nuevaTarea.fecha_tentativa_finalizacion" required [min]="getToday() | date:'yyyy-MM-dd'">
+
     <label for="estado">Estado:</label>
     <select id="estado" name="estado" [(ngModel)]="nuevaTarea.estado" required>
       <option value="SIN_EMPEZAR">Sin empezar</option>
@@ -52,5 +57,4 @@
   
     <button type="submit">Enviar</button>
   </form>
-  
 </div>

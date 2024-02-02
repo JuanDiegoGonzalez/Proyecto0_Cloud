@@ -57,6 +57,14 @@ export class TareasComponent implements OnInit {
       });
     })
   }
+  
+  getToday(): string {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
 
   agregarTarea() {
     this.tareasService.createTarea(this.nuevaTarea, this.cookieService.get('token_de_acceso')).subscribe(ts => {
