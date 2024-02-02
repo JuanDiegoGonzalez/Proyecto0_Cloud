@@ -70,11 +70,21 @@ export class TareasComponent implements OnInit {
     return this.mostrarFormularioNuevaTarea ? 'Cancelar' : 'Agregar Tarea';
   }
 
-  ngOnInit() {
-    if(this.cookieService.get('token_de_acceso') === "") {
+  ngOnInit(): void {
+    const token_de_acceso = this.cookieService.get('token_de_acceso');
+
+    if (token_de_acceso === "") {
       this.router.navigate(['/login']);
     } else {
-      this.getTareasUsuario()
+      const payloadBase64 = token_de_acceso.split('.')[1];
+      const decodedPayload = JSON.parse(window.atob(payloadBase64));
+
+      if (decodedPayload.exp < Date.now() / 1000) {
+        this.cookieService.set('token_de_acceso', "");
+        this.router.navigate(['/login']);
+      } else {
+        this.getTareasUsuario();
+      }
     }
   }
 }
