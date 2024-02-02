@@ -35,9 +35,13 @@ export class LoginComponent implements OnInit {
       const password = passwordControl.value;
 
       this.loginService.login(username, password).subscribe(ls => {
-        this.cookieService.set('token_de_acceso', ls.token_de_acceso);
-        this.cookieService.set('nombre_usuario', ls.usuario.nombre_usuario);
-        this.router.navigate(['/tareas']);
+        if ('error' in ls) {
+          this.loginForm.get('nombre_usuario')!.setErrors({ 'wrongUsernameOrPassword': true });        
+        } else {
+          this.cookieService.set('token_de_acceso', ls.token_de_acceso);
+          this.cookieService.set('nombre_usuario', ls.usuario.nombre_usuario);
+          this.router.navigate(['/tareas']);
+        }
       })
     }
   }

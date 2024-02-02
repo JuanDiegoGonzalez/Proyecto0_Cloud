@@ -66,3 +66,8 @@
 .create-account-link .underline-link:hover {
   text-decoration: none;
 }
+
+.wrongUsernameOrPassword {
+  color: red;
+  margin-bottom: 10px;
+}

@@ -26,7 +26,7 @@
 
 .signup-container .password-mismatch {
   color: red;
-  margin-bottom: 10px; /* Adjusted margin */
+  margin-bottom: 10px;
 }
 
 .signup-container button {

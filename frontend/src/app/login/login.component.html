@@ -7,6 +7,10 @@
     <label for="contrasenia">Contraseña:</label>
     <input type="password" id="contrasenia" formControlName="contrasenia" required>
 
+    <div *ngIf="loginForm.get('nombre_usuario')?.hasError('wrongUsernameOrPassword')" class="wrongUsernameOrPassword">
+      El nombre o contraseña son incorrectos
+    </div>
+
     <button (click)="login()">Login</button>
   </form>
   <p class="create-account-link">¿No tienes una cuenta? <span class="underline-link" (click)="createAccount()">Regístrate</span></p>

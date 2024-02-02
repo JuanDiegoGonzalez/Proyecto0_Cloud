@@ -34,10 +34,7 @@ export class SignupComponent {
       const confirmPassword = confirmPasswordControl.value;
 
       if (password !== confirmPassword) {
-        console.error('Passwords do not match');
-    
-        this.signUpForm.get('confirmar_contrasenia')!.setErrors({ 'passwordMismatch': true });
-        
+        this.signUpForm.get('confirmar_contrasenia')!.setErrors({ 'passwordMismatch': true });        
         return;
       }
 
