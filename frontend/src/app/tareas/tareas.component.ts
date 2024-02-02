@@ -18,12 +18,12 @@ export class TareasComponent implements OnInit {
     texto: '',
     fecha_creacion: new Date(),
     fecha_tentativa_finalizacion: new Date(),
-    estado: 1,
-    categoria: 1,
+    estado: undefined,
     estado_display: '',
     usuario: 0,
+    categoria: 0,
     categoria_display: ''
-  };
+  }
   mostrarFormularioNuevaTarea = false;
 
   constructor(private cdr: ChangeDetectorRef,
@@ -59,7 +59,9 @@ export class TareasComponent implements OnInit {
   }
 
   agregarTarea() {
+    this.tareasService.createTarea(this.nuevaTarea, this.cookieService.get('token_de_acceso')).subscribe(ts => {
 
+    })
   }
 
   toggleFormulario() {

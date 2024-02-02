@@ -18,4 +18,13 @@ export class TareasService {
 
     return this.http.get<Tarea[]>(`http://127.0.0.1:5000/tareas/usuario/`, {headers})
   }
+
+  public createTarea(nuevaTarea: Tarea, token:string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+    });
+
+    return this.http.post('http://127.0.0.1:5000/tareas/', nuevaTarea, {headers})
+  }
 }

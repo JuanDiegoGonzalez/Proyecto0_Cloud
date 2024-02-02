@@ -62,12 +62,15 @@ class VistaUsuario(Resource):
 class VistaTareas(Resource):
     @jwt_required()
     def post(self):
+        usuario = Usuario.query.filter(Usuario.nombre_usuario == get_jwt_identity()).first()
+        print(request.json['fecha_creacion'])
         nueva_tarea = Tarea(texto=request.json['texto'],
-                            fecha_creacion=datetime.strptime(request.json['fecha_creacion'], "%Y-%m-%d").date(),
+                            fecha_creacion=datetime.strptime(request.json['fecha_creacion'].split("T")[0], "%Y-%m-%d").date(),
                             fecha_tentativa_finalizacion=datetime.strptime(request.json['fecha_tentativa_finalizacion'], "%Y-%m-%d").date(),
                             estado=request.json['estado'],
-                            usuario=request.json['usuario'],
+                            usuario=usuario.id,
                             categoria=request.json['categoria'])
+        print(nueva_tarea)
         db.session.add(nueva_tarea)
         usuario = Usuario.query.get_or_404(nueva_tarea.usuario)
         categoria = Categoria.query.get_or_404(nueva_tarea.categoria)

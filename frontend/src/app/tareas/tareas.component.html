@@ -35,18 +35,14 @@
   <form *ngIf="mostrarFormularioNuevaTarea" (ngSubmit)="agregarTarea()">
     <label for="texto">Descripción:</label>
     <input type="text" id="texto" name="texto" [(ngModel)]="nuevaTarea.texto" required>
-  
-    <label for="fecha_creacion">Fecha de creación:</label>
-    <input type="date" id="fecha_creacion" name="fecha_creacion" [(ngModel)]="nuevaTarea.fecha_creacion" required>
-  
+
     <label for="fecha_tentativa_finalizacion">Fecha tentativa de finalización:</label>
     <input type="date" id="fecha_tentativa_finalizacion" name="fecha_tentativa_finalizacion" [(ngModel)]="nuevaTarea.fecha_tentativa_finalizacion" required>
   
     <label for="estado">Estado:</label>
     <select id="estado" name="estado" [(ngModel)]="nuevaTarea.estado" required>
-      <option value="1">Sin empezar</option>
-      <option value="2">Empezada</option>
-      <option value="3">Finalizada</option>
+      <option value="SIN_EMPEZAR">Sin empezar</option>
+      <option value="EMPEZADA">Empezada</option>
     </select>
   
     <label for="categoria">Categoría:</label>
