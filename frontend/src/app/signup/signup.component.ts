@@ -33,6 +33,11 @@ export class SignupComponent {
       const password = passwordControl.value;
       const confirmPassword = confirmPasswordControl.value;
 
+      if (password.length < 8) {
+        this.signUpForm.get('contrasenia')!.setErrors({ 'tooShortPassword': true });        
+        return;
+      }
+
       if (password !== confirmPassword) {
         this.signUpForm.get('confirmar_contrasenia')!.setErrors({ 'passwordMismatch': true });        
         return;

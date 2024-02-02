@@ -56,3 +56,8 @@
 .signup-link .underline-link:hover {
   text-decoration: none;
 }
+
+.tooShortPassword {
+  color: red;
+  margin-bottom: 10px;
+}
