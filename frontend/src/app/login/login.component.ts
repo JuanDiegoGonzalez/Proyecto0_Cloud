@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
       const username = usernameControl.value;
       const password = passwordControl.value;
 
-      this.loginService.login(username, password).subscribe(ls => {
+      this.loginService.login(username, password)
+      .subscribe(ls => {
         if ('error' in ls) {
           this.loginForm.get('nombre_usuario')!.setErrors({ 'wrongUsernameOrPassword': true });        
         } else {

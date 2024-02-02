@@ -9,6 +9,10 @@
 
     <label for="confirmar_contrasenia">Confirmar Contraseña:</label>
     <input type="password" id="confirmar_contrasenia" formControlName="confirmar_contrasenia" required>
+    
+    <div *ngIf="signUpForm.get('nombre_usuario')?.hasError('usernameAlreadyExists')" class="usernameAlreadyExists">
+      Ya existe una cuenta con este nombre
+    </div>
     <div *ngIf="signUpForm.get('contrasenia')?.hasError('tooShortPassword')" class="tooShortPassword">
       La contraseña debe tener 8 o más caracteres
     </div>

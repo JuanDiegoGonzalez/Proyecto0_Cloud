@@ -13,7 +13,7 @@ class VistaSignUp(Resource):
     def post(self):
         yaExisteElUsuario = Usuario.query.filter(Usuario.nombre_usuario == request.json["nombre_usuario"]).first()
         if yaExisteElUsuario:
-            return {'mensaje': 'Ya existe el usuario'}, 409
+            return {'error': 'Ya existe el usuario'}
         else:
             nuevo_usuario = Usuario(nombre_usuario=request.json['nombre_usuario'],
                                     contrasenia=request.json['contrasenia'])
@@ -29,7 +29,7 @@ class VistaLogIn(Resource):
         usuario = Usuario.query.filter(Usuario.nombre_usuario == request.json["nombre_usuario"], Usuario.contrasenia == request.json["contrasenia"]).first()
         db.session.commit()
         if usuario is None:
-            return {"error":"El usuario no existe"}
+            return {"error":"El usuario no existe"}, 404
         else:
             token_de_acceso = create_access_token(identity = usuario.nombre_usuario)
             return {"mensaje":"Acceso concedido", "usuario": usuario_schema.dump(usuario), "token_de_acceso": token_de_acceso}

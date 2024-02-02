@@ -44,9 +44,13 @@ export class SignupComponent {
       }
 
       this.signupService.signup(username, password).subscribe(ss => {
+        if ('error' in ss) {
+          this.signUpForm.get('nombre_usuario')!.setErrors({ 'usernameAlreadyExists': true });        
+        } else {
         this.cookieService.set('token_de_acceso', ss.token_de_acceso);
         this.cookieService.set('nombre_usuario', ss.usuario.nombre_usuario);
         this.router.navigate(['/tareas']);
+        }
       })
     }
   }
