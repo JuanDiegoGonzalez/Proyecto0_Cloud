@@ -1,11 +1,11 @@
 div {
-    font-size: 18px;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
+  font-size: 18px;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logout-button {
@@ -20,3 +20,11 @@ div {
   .logout-button:hover {
     background-color: #ddd;
   }
+
+img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+
+}
