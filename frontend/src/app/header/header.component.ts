@@ -22,5 +22,4 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.nombre_usuario = this.cookieService.get('nombre_usuario');
   }
-
 }

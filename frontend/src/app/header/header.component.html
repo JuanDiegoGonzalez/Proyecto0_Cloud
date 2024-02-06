@@ -1,5 +1,12 @@
-<div>
-    <img src="assets/user.png" alt="User Image">
-    Bienvenid&#64;, {{ nombre_usuario }}!
-    <button class="logout-button" (click)="cerrarSesion()">Cerrar sesión</button>
+<div class="header">
+    <div class="links">
+        <a href="/page1">Link 1</a>
+        <a href="/page2">Link 2</a>
+        <a href="/page3">Link 3</a>
+    </div>
+    <div class="user-info">
+        <img src="assets/user.png" alt="User Image">
+        <span>Bienvenid&#64;, {{ nombre_usuario }}!</span>
+        <button class="logout-button" (click)="cerrarSesion()">Cerrar sesión</button>
+    </div>
 </div>
