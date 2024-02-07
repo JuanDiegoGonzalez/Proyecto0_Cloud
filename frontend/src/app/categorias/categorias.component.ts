@@ -13,17 +13,21 @@ import { TareasService } from '../tareas/tareas.service';
 })
 export class CategoriasComponent implements OnInit {
   categorias: Array<Categoria>;
-  nuevaCategoria: Categoria = {
-    nombre: '',
-    descripcion: '',
-    tareas: [],
-    id: 0
-  }
+  nuevaCategoria: Categoria;
   mostrarFormularioNuevaCategoria = false;
 
   constructor(private categoriasService: CategoriasService,
     private cookieService: CookieService,
     private router: Router) { }
+
+  inicializarNuevaCategoria() {
+    this.nuevaCategoria = {
+      nombre: '',
+      descripcion: '',
+      tareas: [],
+      id: 0
+    }
+  }
 
   getCategorias() {
     this.categoriasService.getCategorias(this.cookieService.get('token_de_acceso')).subscribe(cs => {
@@ -41,6 +45,9 @@ export class CategoriasComponent implements OnInit {
 
   agregarCategoria() {
     this.categoriasService.createCategoria(this.nuevaCategoria, this.cookieService.get('token_de_acceso')).subscribe(cs => {
+      this.inicializarNuevaCategoria();
+      this.toggleFormulario();
+      this.getCategorias();
     })
   }
 
@@ -57,6 +64,7 @@ export class CategoriasComponent implements OnInit {
         this.cookieService.set('token_de_acceso', "");
         this.router.navigate(['/login']);
       } else {
+        this.inicializarNuevaCategoria();
         this.getCategorias();
       }
     }
