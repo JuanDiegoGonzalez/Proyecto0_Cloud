@@ -14,16 +14,7 @@ import { Categoria } from '../categorias/Categoria';
 export class TareasComponent implements OnInit {
   tareas: Array<Tarea>;
   categorias: Array<Categoria>;
-  nuevaTarea: Tarea = {
-    texto: '',
-    fecha_creacion: new Date(),
-    fecha_tentativa_finalizacion: new Date(),
-    estado: undefined,
-    estado_display: '',
-    usuario: 0,
-    categoria: 0,
-    categoria_display: ''
-  }
+  nuevaTarea: Tarea;
   mostrarFormularioNuevaTarea = false;
 
   constructor(private tareasService: TareasService,
@@ -65,8 +56,24 @@ export class TareasComponent implements OnInit {
     return `${year}-${month}-${day}`;
   }
 
+  inicializarNuevaTarea() {
+    this.nuevaTarea = {
+      texto: '',
+      fecha_creacion: new Date(),
+      fecha_tentativa_finalizacion: new Date(),
+      estado: undefined,
+      estado_display: '',
+      usuario: 0,
+      categoria: 0,
+      categoria_display: ''
+    }
+  }
+
   agregarTarea() {
     this.tareasService.createTarea(this.nuevaTarea, this.cookieService.get('token_de_acceso')).subscribe(ts => {
+      this.inicializarNuevaTarea();
+      this.toggleFormulario();
+      this.getTareasUsuario();
     })
   }
 
@@ -91,6 +98,7 @@ export class TareasComponent implements OnInit {
         this.cookieService.set('token_de_acceso', "");
         this.router.navigate(['/login']);
       } else {
+        this.inicializarNuevaTarea();
         this.getTareasUsuario();
       }
     }

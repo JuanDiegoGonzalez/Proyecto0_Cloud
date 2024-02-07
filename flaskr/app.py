@@ -1,7 +1,6 @@
-from datetime import date, datetime
 from flaskr import create_app
-from flaskr.views.views import VistaCategoriasUsuario, VistaLogIn, VistaSignUp, VistaTareasUsuario
-from .models import db, Usuario
+from flaskr.views.views import VistaLogIn, VistaSignUp, VistaTareasUsuario
+from .models import db
 from flask_restful import Api
 from .views import VistaUsuarios, VistaUsuario, VistaTareas, VistaTarea, VistaCategorias, VistaCategoria
 from flask_jwt_extended import JWTManager

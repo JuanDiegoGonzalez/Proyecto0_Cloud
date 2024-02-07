@@ -12,9 +12,7 @@ import { TareasService } from '../tareas/tareas.service';
   styleUrls: ['./categorias.component.css']
 })
 export class CategoriasComponent implements OnInit {
-  tareas: Array<Tarea>;
   categorias: Array<Categoria>;
-  categoriasUsuario: Array<Categoria>;
   nuevaCategoria: Categoria = {
     nombre: '',
     descripcion: '',
@@ -23,24 +21,13 @@ export class CategoriasComponent implements OnInit {
   }
   mostrarFormularioNuevaCategoria = false;
 
-  constructor(private tareasService: TareasService,
-    private categoriasService: CategoriasService,
+  constructor(private categoriasService: CategoriasService,
     private cookieService: CookieService,
     private router: Router) { }
 
-  getCategoriasUsuario() {
-    this.tareasService.getTareasUsuario(this.cookieService.get('token_de_acceso')).subscribe(ts => {
-      this.tareas = ts;
-    })
+  getCategorias() {
     this.categoriasService.getCategorias(this.cookieService.get('token_de_acceso')).subscribe(cs => {
       this.categorias = cs;
-      this.tareas.forEach(tarea => {
-        console.log(tarea.categoria)
-        const categoriaAsociada = this.categorias.find(categoria => categoria.id === tarea.categoria);
-        if (categoriaAsociada) {
-          this.categoriasUsuario.push(categoriaAsociada);
-        }
-      });
     })
   }
 
@@ -49,11 +36,12 @@ export class CategoriasComponent implements OnInit {
   }
 
   textoBoton() {
-    return this.mostrarFormularioNuevaCategoria ? 'Cancelar' : 'Agregar Tarea';
+    return this.mostrarFormularioNuevaCategoria ? 'Cancelar' : 'Agregar Categoria';
   }
 
   agregarCategoria() {
-
+    this.categoriasService.createCategoria(this.nuevaCategoria, this.cookieService.get('token_de_acceso')).subscribe(cs => {
+    })
   }
 
   ngOnInit() {
@@ -69,7 +57,7 @@ export class CategoriasComponent implements OnInit {
         this.cookieService.set('token_de_acceso', "");
         this.router.navigate(['/login']);
       } else {
-        this.getCategoriasUsuario();
+        this.getCategorias();
       }
     }
   }
