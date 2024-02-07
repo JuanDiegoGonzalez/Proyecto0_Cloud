@@ -1,6 +1,5 @@
 from datetime import date, datetime
 from flaskr import create_app
-from flaskr.models.models import Categoria, CategoriaSchema, Estado, Tarea, TareaSchema, UsuarioSchema
 from flaskr.views.views import VistaCategoriasUsuario, VistaLogIn, VistaSignUp, VistaTareasUsuario
 from .models import db, Usuario
 from flask_restful import Api
@@ -27,6 +26,5 @@ api.add_resource(VistaTarea, '/tareas/<int:id_tarea>/')
 api.add_resource(VistaCategorias, '/categorias/')
 api.add_resource(VistaCategoria, '/categorias/<int:id_categoria>/')
 api.add_resource(VistaTareasUsuario, '/tareas/usuario/')
-api.add_resource(VistaCategoriasUsuario, '/categorias/usuario/')
 
 jwt = JWTManager(app)

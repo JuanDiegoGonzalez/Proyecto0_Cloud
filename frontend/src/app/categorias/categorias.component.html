@@ -1,10 +1,18 @@
 <app-header></app-header>
 <h2 class="centered">Tus categorías:</h2>
-<ng-container *ngIf="categorias && categorias.length > 0; else noCategorias">
+<ng-container *ngIf="categoriasUsuario && categoriasUsuario.length > 0; else noCategorias">
   <ul class="category-list">
-    <li *ngFor="let categoria of categorias" class="centered">{{ categoria.nombre }} - {{ categoria.descripcion }}</li>
+    <li *ngFor="let categoria of categoriasUsuario" class="centered">{{ categoria.nombre }} - {{ categoria.descripcion }}</li>
   </ul>
 </ng-container>
 <ng-template #noCategorias>
   <p class="centered">No tienes categorías. ¡Crea una!</p>
 </ng-template>
+<button (click)="toggleFormulario()">{{ textoBoton() }}</button>
+<form *ngIf="mostrarFormularioNuevaCategoria" (ngSubmit)="agregarCategoria()">
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" name="nombre" [(ngModel)]="nuevaCategoria.nombre" required>
+  <label for="descripcion">Descripción:</label>
+  <input type="text" id="descripcion" name="descripcion" [(ngModel)]="nuevaCategoria.descripcion" required>
+  <button type="submit">Enviar</button>
+</form>
