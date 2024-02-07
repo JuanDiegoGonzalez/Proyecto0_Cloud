@@ -26,8 +26,7 @@ export class TareasComponent implements OnInit {
   }
   mostrarFormularioNuevaTarea = false;
 
-  constructor(private cdr: ChangeDetectorRef,
-    private tareasService: TareasService,
+  constructor(private tareasService: TareasService,
     private categoriasService: CategoriasService,
     private cookieService: CookieService,
     private router: Router) { }
@@ -68,7 +67,6 @@ export class TareasComponent implements OnInit {
 
   agregarTarea() {
     this.tareasService.createTarea(this.nuevaTarea, this.cookieService.get('token_de_acceso')).subscribe(ts => {
-
     })
   }
 

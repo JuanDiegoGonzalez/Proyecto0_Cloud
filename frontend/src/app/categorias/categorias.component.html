@@ -1,3 +1,10 @@
-<p>
-  categorias works!
-</p>
+<app-header></app-header>
+<h2 class="centered">Tus categorías:</h2>
+<ng-container *ngIf="categorias && categorias.length > 0; else noCategorias">
+  <ul class="category-list">
+    <li *ngFor="let categoria of categorias" class="centered">{{ categoria.nombre }} - {{ categoria.descripcion }}</li>
+  </ul>
+</ng-container>
+<ng-template #noCategorias>
+  <p class="centered">No tienes categorías. ¡Crea una!</p>
+</ng-template>

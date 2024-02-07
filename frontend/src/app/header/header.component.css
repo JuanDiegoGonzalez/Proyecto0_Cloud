@@ -50,3 +50,13 @@ span {
   justify-content: space-between;
   align-items: center;
 }
+
+.underline-link {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+.underline-link:hover {
+  text-decoration: none;
+}

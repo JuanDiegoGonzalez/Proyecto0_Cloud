@@ -149,3 +149,9 @@ class VistaTareasUsuario(Resource):
     def get(self):
         usuario = Usuario.query.filter(Usuario.nombre_usuario == get_jwt_identity()).first()
         return [tarea_schema.dump(tarea) for tarea in Tarea.query.filter(Tarea.usuario == usuario.id)]
+
+class VistaCategoriasUsuario(Resource):
+    @jwt_required()
+    def get(self):
+        usuario = Usuario.query.filter(Usuario.nombre_usuario == get_jwt_identity()).first()
+        return [categoria_schema.dump(categoria) for categoria in Categoria.query.filter(Categoria.usuario == usuario.id)]

@@ -15,6 +15,6 @@ export class CategoriasService {
       'Authorization': 'Bearer ' + token,
     });
 
-    return this.http.get<Categoria[]>(`http://127.0.0.1:5000/categorias/`, {headers})
+    return this.http.get<Categoria[]>(`http://127.0.0.1:5000/categorias/usuario`, {headers})
   }
 }

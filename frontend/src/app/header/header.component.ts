@@ -19,6 +19,14 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  verTareas() {
+    this.router.navigate(['/tareas']);
+  }
+
+  verCategorias() {
+    this.router.navigate(['/categorias']);
+  }
+
   ngOnInit() {
     this.nombre_usuario = this.cookieService.get('nombre_usuario');
   }
