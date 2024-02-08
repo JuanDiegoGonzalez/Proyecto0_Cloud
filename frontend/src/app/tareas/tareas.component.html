@@ -29,6 +29,12 @@
           <td>
             <dd>{{t.categoria_display}}</dd>
           </td>
+          <td class="icon" (click)="editarTarea(t)">
+            <img src="assets/edit.png" alt="Editar" title="Editar">
+          </td>
+          <td class="icon" (click)="borrarTarea(t)">
+            <img src="assets/bin.png" alt="Borrar" title="Borrar">
+           </td>
         </tr>
       </tbody>
     </table>

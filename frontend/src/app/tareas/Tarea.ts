@@ -1,5 +1,6 @@
 export class Tarea {
-    constructor(public texto:string,
+    constructor(public id:number,
+        public texto:string,
         public fecha_creacion:Date,
         public fecha_tentativa_finalizacion:Date,
         public estado:any,

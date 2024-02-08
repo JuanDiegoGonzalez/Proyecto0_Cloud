@@ -38,13 +38,13 @@ export class TareasComponent implements OnInit {
             break;
         }
       });
-    })
-    this.categoriasService.getCategorias(this.cookieService.get('token_de_acceso')).subscribe(cs => {
-      this.categorias = cs;
-      this.tareas.forEach(tarea => {
-        const categoriaAsociada = this.categorias.find(categoria => categoria.id === tarea.categoria);
-        tarea.categoria_display = categoriaAsociada ? categoriaAsociada.nombre : 'Sin categoría';
-      });
+      this.categoriasService.getCategorias(this.cookieService.get('token_de_acceso')).subscribe(cs => {
+        this.categorias = cs;
+        this.tareas.forEach(tarea => {
+          const categoriaAsociada = this.categorias.find(categoria => categoria.id === tarea.categoria);
+          tarea.categoria_display = categoriaAsociada ? categoriaAsociada.nombre : 'Sin categoría';
+        });
+      })
     })
   }
   
@@ -58,6 +58,7 @@ export class TareasComponent implements OnInit {
 
   inicializarNuevaTarea() {
     this.nuevaTarea = {
+      id: 0,
       texto: '',
       fecha_creacion: new Date(),
       fecha_tentativa_finalizacion: new Date(),
@@ -73,6 +74,18 @@ export class TareasComponent implements OnInit {
     this.tareasService.createTarea(this.nuevaTarea, this.cookieService.get('token_de_acceso')).subscribe(ts => {
       this.inicializarNuevaTarea();
       this.toggleFormulario();
+      this.getTareasUsuario();
+    })
+  }
+
+  editarTarea(tarea: Tarea) {
+    this.tareasService.createTarea(this.nuevaTarea, this.cookieService.get('token_de_acceso')).subscribe(ts => {
+      this.getTareasUsuario();
+    })
+  }
+
+  borrarTarea(tarea: Tarea) {
+    this.tareasService.deleteTarea(tarea, this.cookieService.get('token_de_acceso')).subscribe(ts => {
       this.getTareasUsuario();
     })
   }
