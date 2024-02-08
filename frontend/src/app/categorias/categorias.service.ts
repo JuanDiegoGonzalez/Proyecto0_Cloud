@@ -26,4 +26,13 @@ export class CategoriasService {
 
     return this.http.post('http://127.0.0.1:5000/categorias/', nuevaCategoria, {headers})
   }
+
+  public deleteCategoria(categoria: Categoria, token:string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+    });
+
+    return this.http.delete('http://127.0.0.1:5000/categorias/' + categoria.id + '/', {headers})
+  }
 }

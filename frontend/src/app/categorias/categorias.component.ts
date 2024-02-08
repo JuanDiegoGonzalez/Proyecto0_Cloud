@@ -56,7 +56,13 @@ export class CategoriasComponent implements OnInit {
   }
 
   borrarCategoria(categoria: Categoria) {
-
+    if(categoria.tareas.length > 0) {
+      alert("No se puede borrar. Esta categoría tiene tareas asociadas.")
+    } else {    
+      this.categoriasService.deleteCategoria(categoria, this.cookieService.get('token_de_acceso')).subscribe(cs => {
+        this.getCategorias();
+      })
+    }
   }
 
   ngOnInit() {
