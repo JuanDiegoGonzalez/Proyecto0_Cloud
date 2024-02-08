@@ -51,10 +51,6 @@ export class CategoriasComponent implements OnInit {
     })
   }
 
-  editarCategoria(categoria: Categoria) {
-
-  }
-
   borrarCategoria(categoria: Categoria) {
     if(categoria.tareas.length > 0) {
       alert("No se puede borrar. Esta categoría tiene tareas asociadas.")

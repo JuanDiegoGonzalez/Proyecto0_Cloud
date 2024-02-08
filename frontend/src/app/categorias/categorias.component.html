@@ -5,12 +5,7 @@
     <ul class="category-list">
       <li *ngFor="let categoria of categorias" class="centered">
         <div class="text-div">{{ categoria.nombre }} - {{ categoria.descripcion }}</div>
-        <span class="icon" (click)="editarCategoria(categoria)">
-          <img src="assets/edit.png" alt="Editar" title="Editar">
-        </span>
-        <span class="icon" (click)="borrarCategoria(categoria)">
-          <img src="assets/bin.png" alt="Borrar" title="Borrar">
-        </span>
+        <img src="assets/bin.png" alt="Borrar" title="Borrar" class="icon" (click)="borrarCategoria(categoria)">
       </li>
     </ul>
   </ng-container>

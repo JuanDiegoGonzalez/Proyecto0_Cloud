@@ -28,6 +28,15 @@ export class TareasService {
     return this.http.post('http://127.0.0.1:5000/tareas/', nuevaTarea, {headers})
   }
 
+  public updateTarea(tarea: Tarea, token:string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+    });
+
+    return this.http.put('http://127.0.0.1:5000/tareas/' + tarea.id + '/', tarea, {headers})
+  }
+
   public deleteTarea(tarea: Tarea, token:string) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

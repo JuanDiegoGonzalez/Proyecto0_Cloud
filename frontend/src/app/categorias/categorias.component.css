@@ -17,8 +17,9 @@ li {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 60%;
+  width: 40%;
   max-width: 900px;
+  margin-bottom: 10px;
 }
 
 .icon {
@@ -35,9 +36,8 @@ li {
 }
 
 img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 30px;
+  height: 30px;
   margin-right: 10px;
 }
 
@@ -52,12 +52,11 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
   margin-right: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-left: 15%;
+  margin-left: 10%;
 }
 
 .category-content {

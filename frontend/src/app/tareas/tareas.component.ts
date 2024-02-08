@@ -79,7 +79,7 @@ export class TareasComponent implements OnInit {
   }
 
   editarTarea(tarea: Tarea) {
-    this.tareasService.createTarea(this.nuevaTarea, this.cookieService.get('token_de_acceso')).subscribe(ts => {
+    this.tareasService.updateTarea(tarea, this.cookieService.get('token_de_acceso')).subscribe(ts => {
       this.getTareasUsuario();
     })
   }
