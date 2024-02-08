@@ -51,6 +51,14 @@ export class CategoriasComponent implements OnInit {
     })
   }
 
+  editarCategoria(categoria: Categoria) {
+
+  }
+
+  borrarCategoria(categoria: Categoria) {
+
+  }
+
   ngOnInit() {
     const token_de_acceso = this.cookieService.get('token_de_acceso');
 

@@ -3,7 +3,15 @@
   <h2 class="centered">Categorías:</h2>
   <ng-container *ngIf="categorias && categorias.length > 0; else noCategorias">
     <ul class="category-list">
-      <li *ngFor="let categoria of categorias" class="centered">{{ categoria.nombre }} - {{ categoria.descripcion }}</li>
+      <li *ngFor="let categoria of categorias" class="centered">
+        <div class="text-div">{{ categoria.nombre }} - {{ categoria.descripcion }}</div>
+        <span class="icon" (click)="editarCategoria(categoria)">
+          <img src="assets/edit.png" alt="Editar" title="Editar">
+        </span>
+        <span class="icon" (click)="borrarCategoria(categoria)">
+          <img src="assets/bin.png" alt="Borrar" title="Borrar">
+        </span>
+      </li>
     </ul>
   </ng-container>
   <ng-template #noCategorias>
