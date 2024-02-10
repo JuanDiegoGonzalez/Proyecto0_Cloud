@@ -29,7 +29,7 @@ class VistaLogIn(Resource):
         usuario = Usuario.query.filter(Usuario.nombre_usuario == request.json["nombre_usuario"], Usuario.contrasenia == request.json["contrasenia"]).first()
         db.session.commit()
         if usuario is None:
-            return {"error":"El usuario no existe"}, 404
+            return {"error":"El usuario no existe"}
         else:
             token_de_acceso = create_access_token(identity = usuario.nombre_usuario)
             return {"mensaje":"Acceso concedido", "usuario": usuario_schema.dump(usuario), "token_de_acceso": token_de_acceso}
