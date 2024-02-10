@@ -3,8 +3,6 @@ import { CategoriasService } from './categorias.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { Categoria } from './Categoria';
-import { Tarea } from '../tareas/Tarea';
-import { TareasService } from '../tareas/tareas.service';
 
 @Component({
   selector: 'app-categorias',
@@ -79,5 +77,4 @@ export class CategoriasComponent implements OnInit {
       }
     }
   }
-
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Tarea } from './Tarea'
 import { TareasService } from './tareas.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -74,12 +74,6 @@ export class TareasComponent implements OnInit {
     this.tareasService.createTarea(this.nuevaTarea, this.cookieService.get('token_de_acceso')).subscribe(ts => {
       this.inicializarNuevaTarea();
       this.toggleFormulario();
-      this.getTareasUsuario();
-    })
-  }
-
-  editarTarea(tarea: Tarea) {
-    this.tareasService.updateTarea(tarea, this.cookieService.get('token_de_acceso')).subscribe(ts => {
       this.getTareasUsuario();
     })
   }

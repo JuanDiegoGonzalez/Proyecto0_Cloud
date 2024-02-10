@@ -29,9 +29,6 @@
           <td>
             <dd>{{t.categoria_display}}</dd>
           </td>
-          <td class="icon" (click)="editarTarea(t)">
-            <img src="assets/edit.png" alt="Editar" title="Editar">
-          </td>
           <td class="icon" (click)="borrarTarea(t)">
             <img src="assets/bin.png" alt="Borrar" title="Borrar">
            </td>
@@ -54,6 +51,7 @@
     <select id="estado" name="estado" [(ngModel)]="nuevaTarea.estado" required>
       <option value="SIN_EMPEZAR">Sin empezar</option>
       <option value="EMPEZADA">Empezada</option>
+      <option value="FINALIZADA">Finalizada</option>
     </select>
   
     <label for="categoria">Categoría:</label>
