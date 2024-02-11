@@ -2,17 +2,18 @@
 
 ## Proyecto 0
 
-Enlace Repositorio Github (Código fuente de la aplicación):
+- Enlace Repositorio Github (Código fuente de la aplicación):
 https://github.com/JuanDiegoGonzalez/Proyecto0_Cloud
 
-Enlace Sustentación (Video):
+- Enlace Sustentación (Video):
 https://www.youtube.com/watch?v=z-OZsRIz8-Q
 
-Enlace Contenedores Docker:
+- Enlace Contenedores Docker:
 https://hub.docker.com/repository/docker/juandigz/proyecto0_front/general
 https://hub.docker.com/repository/docker/juandigz/proyecto0_back/general
 
-Instrucciones de Despliegue y Uso:
+- Instrucciones de Despliegue y Uso:
+
 •	Backend (Flask):
 o	Desde una terminal de Powershell, ejecutar el comando:
 
@@ -32,6 +33,6 @@ docker run --name proyecto0_front -p 8080:8080 -e -d juandigz/proyecto0_front
 o	Ir a la ruta http://127.0.0.1:8080/
 
 
-Enlace Documentación con Postman:
+- Enlace Documentación con Postman:
 https://documenter.getpostman.com/view/12464767/2sA2r3YRC1
 
