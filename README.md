@@ -10,8 +10,8 @@ https://www.youtube.com/watch?v=z-OZsRIz8-Q
 
 - Enlace Contenedores Docker:
 
-https://hub.docker.com/repository/docker/juandigz/proyecto0_front/general
-https://hub.docker.com/repository/docker/juandigz/proyecto0_back/general
+  https://hub.docker.com/repository/docker/juandigz/proyecto0_front/general
+  https://hub.docker.com/repository/docker/juandigz/proyecto0_back/general
 
 - Instrucciones de Despliegue y Uso:
 
@@ -27,9 +27,9 @@ https://hub.docker.com/repository/docker/juandigz/proyecto0_back/general
   - Frontend (Angular):
     - Desde otra terminal de Powershell, ejecutar el comando:
 
-  ```shell
-  docker run --name proyecto0_front -p 8080:8080 -e -d juandigz/proyecto0_front
-  ```
+    ```shell
+    docker run --name proyecto0_front -p 8080:8080 -e -d juandigz/proyecto0_front
+    ```
 
     -	Ir a la ruta http://127.0.0.1:8080/
 
