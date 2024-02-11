@@ -35,5 +35,5 @@ https://www.youtube.com/watch?v=z-OZsRIz8-Q
 
 
 - Enlace Documentación con Postman:
-https://documenter.getpostman.com/view/12464767/2sA2r3YRC1
+https://documenter.getpostman.com/view/12464767/2sA2r3YRC1 (si no carga, abrir desde incógnito)
 
