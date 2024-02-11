@@ -17,8 +17,7 @@ https://hub.docker.com/repository/docker/juandigz/proyecto0_back/general
   -	Backend (Flask):
     - Desde una terminal de Powershell, ejecutar el comando:
 
-``
-docker run --name proyecto0_back -p 5000:5000 -e -d juandigz/proyecto0_back
+``docker run --name proyecto0_back -p 5000:5000 -e -d juandigz/proyecto0_back
 
     -	Ir a la ruta http://127.0.0.1:5000/tareas/ (aparecerá un mensaje indicando que falta el header de autorización, ya que no se ha hecho login. Esto se puede realizar a través de una petición POST desde Postman)
 
