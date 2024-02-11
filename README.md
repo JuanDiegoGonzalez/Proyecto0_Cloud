@@ -1,6 +1,6 @@
-###Juan Diego Gonzalez Gomez – 201911031
+### Juan Diego Gonzalez Gomez – 201911031
 
-##Proyecto 0
+## Proyecto 0
 
 Enlace Repositorio Github (Código fuente de la aplicación):
 https://github.com/JuanDiegoGonzalez/Proyecto0_Cloud
@@ -18,6 +18,7 @@ o	Desde una terminal de Powershell, ejecutar el comando:
 
 ```bash
 docker run --name proyecto0_back -p 5000:5000 -e -d juandigz/proyecto0_back
+```bash
 
 o	Ir a la ruta http://127.0.0.1:5000/tareas/ (aparecerá un mensaje indicando que falta el header de autorización, ya que no se ha hecho login. Esto se puede realizar a través de una petición POST desde Postman)
 
@@ -26,6 +27,7 @@ o	Desde otra terminal de Powershell, ejecutar el comando:
 
 ```bash
 docker run --name proyecto0_front -p 8080:8080 -e -d juandigz/proyecto0_front
+```bash
 
 o	Ir a la ruta http://127.0.0.1:8080/
 
