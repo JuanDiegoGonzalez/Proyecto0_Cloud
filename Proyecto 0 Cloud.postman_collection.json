@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "0b664bd0-5891-4689-bbd0-1a0ee1099d28",
 		"name": "Proyecto 0 Cloud",
+		"description": "Conjunto de pruebas para el Proyecto 0 del curso. Creado por Juan Diego Gonzalez Gomez.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12464767"
 	},
@@ -53,7 +54,8 @@
 								"signup",
 								""
 							]
-						}
+						},
+						"description": "Prueba el registro de un usuario en la aplicación. Se debe crear el usuario en la aplicación."
 					},
 					"response": []
 				},
@@ -96,7 +98,8 @@
 								"signup",
 								""
 							]
-						}
+						},
+						"description": "Prueba el registro de un usuario en la aplicación con un nombre de usuario ya existente. No se debe crear el usuario en la aplicación."
 					},
 					"response": []
 				},
@@ -153,7 +156,8 @@
 								"login",
 								""
 							]
-						}
+						},
+						"description": "Prueba el inicio de sesión en la aplicación con credenciales inválidas. No se debe obtener el token de acceso."
 					},
 					"response": []
 				},
@@ -216,7 +220,8 @@
 								"login",
 								""
 							]
-						}
+						},
+						"description": "Prueba el inicio de sesión en la aplicación con credenciales válidas. Se debe obtener el token de acceso."
 					},
 					"response": []
 				},
@@ -258,7 +263,8 @@
 								"usuarios",
 								""
 							]
-						}
+						},
+						"description": "Lista todos los usuarios existentes en la aplicación."
 					},
 					"response": []
 				},
@@ -301,7 +307,8 @@
 								"{{id_usuario}}",
 								""
 							]
-						}
+						},
+						"description": "Busca un usuario con un id existente en la aplicación."
 					},
 					"response": []
 				},
@@ -344,7 +351,8 @@
 								"{{id_usuario_no_existente}}",
 								""
 							]
-						}
+						},
+						"description": "Busca un usuario con un id inexistente."
 					},
 					"response": []
 				},
@@ -396,7 +404,8 @@
 								"{{id_usuario}}",
 								""
 							]
-						}
+						},
+						"description": "Edita un usuario con un id existente en la aplicación."
 					},
 					"response": []
 				},
@@ -448,7 +457,8 @@
 								"{{id_usuario_no_existente}}",
 								""
 							]
-						}
+						},
+						"description": "Edita un usuario con un id inexistente. No se edita nada en la aplicación."
 					},
 					"response": []
 				},
@@ -491,7 +501,8 @@
 								"{{id_usuario}}",
 								""
 							]
-						}
+						},
+						"description": "Elimina un usuario con un id existente en la aplicación."
 					},
 					"response": []
 				},
@@ -534,11 +545,13 @@
 								"{{id_usuario_no_existente}}",
 								""
 							]
-						}
+						},
+						"description": "Elimina un usuario con un id inexistente. No se elimina nada en la aplicación."
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Pruebas para Usuario."
 		},
 		{
 			"name": "Categoria",
@@ -587,7 +600,8 @@
 								"signup",
 								""
 							]
-						}
+						},
+						"description": "Crea un usuario para las pruebas de Categoria."
 					},
 					"response": []
 				},
@@ -642,7 +656,8 @@
 								"categorias",
 								""
 							]
-						}
+						},
+						"description": "Crea una categoria en la aplicación."
 					},
 					"response": []
 				},
@@ -684,7 +699,8 @@
 								"categorias",
 								""
 							]
-						}
+						},
+						"description": "Lista todas las categorías en la aplicación."
 					},
 					"response": []
 				},
@@ -727,7 +743,8 @@
 								"{{id_categoria}}",
 								""
 							]
-						}
+						},
+						"description": "Busca una categoría con un id existente en la aplicación."
 					},
 					"response": []
 				},
@@ -770,7 +787,8 @@
 								"{{id_categoria_no_existente}}",
 								""
 							]
-						}
+						},
+						"description": "Busca una categoria con un id inexistente."
 					},
 					"response": []
 				},
@@ -822,7 +840,8 @@
 								"{{id_categoria}}",
 								""
 							]
-						}
+						},
+						"description": "Edita una categoría con un id existente en la aplicación."
 					},
 					"response": []
 				},
@@ -874,7 +893,8 @@
 								"{{id_categoria_no_existente}}",
 								""
 							]
-						}
+						},
+						"description": "Edita una categoría con un id inexistente. No se edita nada en la aplicación."
 					},
 					"response": []
 				},
@@ -917,7 +937,8 @@
 								"{{id_categoria}}",
 								""
 							]
-						}
+						},
+						"description": "Elimina una categoría con un id existente en la aplicación."
 					},
 					"response": []
 				},
@@ -960,7 +981,8 @@
 								"{{id_categoria_no_existente}}",
 								""
 							]
-						}
+						},
+						"description": "Elimina una categoría con un id inexistente. No se elimina nada en la aplicación."
 					},
 					"response": []
 				},
@@ -1003,11 +1025,13 @@
 								"{{id_usuario}}",
 								""
 							]
-						}
+						},
+						"description": "Se elimina el usuario creado para las pruebas de Categoría."
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Pruebas para Categoria."
 		},
 		{
 			"name": "Tarea",
@@ -1056,7 +1080,8 @@
 								"signup",
 								""
 							]
-						}
+						},
+						"description": "Crea un usuario para las pruebas de Tarea."
 					},
 					"response": []
 				},
@@ -1111,7 +1136,8 @@
 								"categorias",
 								""
 							]
-						}
+						},
+						"description": "Crea una categoría para las pruebas de Tarea."
 					},
 					"response": []
 				},
@@ -1166,7 +1192,8 @@
 								"tareas",
 								""
 							]
-						}
+						},
+						"description": "Crea una tarea en la aplicación."
 					},
 					"response": []
 				},
@@ -1208,7 +1235,8 @@
 								"tareas",
 								""
 							]
-						}
+						},
+						"description": "Lista todas las tareas registradas en la aplicación."
 					},
 					"response": []
 				},
@@ -1251,7 +1279,8 @@
 								"{{id_tarea}}",
 								""
 							]
-						}
+						},
+						"description": "Busca una tarea con un id existente en la aplicación."
 					},
 					"response": []
 				},
@@ -1294,7 +1323,8 @@
 								"{{id_tarea_no_existente}}",
 								""
 							]
-						}
+						},
+						"description": "Busca una tarea con un id inexistente."
 					},
 					"response": []
 				},
@@ -1337,7 +1367,8 @@
 								"usuario",
 								""
 							]
-						}
+						},
+						"description": "Busca las tareas de un usuario según su id."
 					},
 					"response": []
 				},
@@ -1389,7 +1420,8 @@
 								"{{id_tarea}}",
 								""
 							]
-						}
+						},
+						"description": "Edita una tarea con un id existente en la aplicación."
 					},
 					"response": []
 				},
@@ -1441,7 +1473,8 @@
 								"{{id_tarea_no_existente}}",
 								""
 							]
-						}
+						},
+						"description": "Edita una tarea con un id inexistente. No se edita nada en la aplicación."
 					},
 					"response": []
 				},
@@ -1484,7 +1517,8 @@
 								"{{id_tarea}}",
 								""
 							]
-						}
+						},
+						"description": "Elimina una tarea con un id existente en la aplicación."
 					},
 					"response": []
 				},
@@ -1527,7 +1561,8 @@
 								"{{id_tarea_no_existente}}",
 								""
 							]
-						}
+						},
+						"description": "Elimina una tarea con un id inexistente. No se elimina nada en la aplicación."
 					},
 					"response": []
 				},
@@ -1570,7 +1605,8 @@
 								"{{id_categoria}}",
 								""
 							]
-						}
+						},
+						"description": "Se elimina la categoría creada para las pruebas de Tarea."
 					},
 					"response": []
 				},
@@ -1613,11 +1649,13 @@
 								"{{id_usuario}}",
 								""
 							]
-						}
+						},
+						"description": "Se elimina el usuario creado para las pruebas de Tarea."
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Pruebas para Tarea."
 		}
 	]
 }
